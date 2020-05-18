@@ -1,0 +1,540 @@
+/* NOTE: Read the documentation for detailed configuration instructions.
+ */
+
+{
+    /******************
+     * Global options *
+     ******************/
+    "general.logging_level": "ERROR",
+    "general.persist_console": false,
+
+    /*********************************************
+     * Options used in code_formatter.py plugin. *
+     *********************************************/
+    // NOTE:
+    // - This command replaces HTML-CSS-JS Prettify plugin.
+    // - CLI supported languages: CSS/JavaScript/HTML
+    // - CLI git repository: https://github.com/beautify-web/js-beautify
+    // - CLI installation: Installed with `sudo npm install -g js-beautify`.
+    // - CLI alternative installation: Installed with `sudo pip3 install jsbeautifier`.
+    // - The Python CLI version of js-beautify can only format JavaScript.
+    "code_formatter.odyseus_html_prettifier": {
+        "exec_map": {
+            "linux": [{
+                "cmd": "/usr/bin/html-beautify",
+                "args": [
+                    "--indent-inner-html",
+                    "--wrap-attributes=force-aligned",
+                    "--brace-style=collapse",
+                    "--type",
+                    "html",
+                    "--quiet",
+                    "-"
+                ]
+            }],
+            "osx": [],
+            "windows": []
+        },
+        "is_visible": ["html", "xml", "svg"]
+    },
+
+    // NOTE:
+    // - Prettier is total garbage for formatting HTML.
+    // Do not even bother to try it again until more options are added
+    // (which will never happen, due to their retarded "philosophy").
+    "code_formatter.odyseus_html_prettifier_prettier": {
+        "exec_map": {
+            "linux": [{
+                "cmd": "/usr/bin/prettier",
+                "args": [
+                    "--parser",
+                    "html",
+                    "--config",
+                    "~/.prettierrc.yaml"
+                ]
+            }],
+            "osx": [],
+            "windows": []
+        },
+        "is_visible": ["html", "xml", "svg"]
+    },
+
+    // NOTE:
+    // - CLI used: st_scripts/html5_converter.py.
+    "code_formatter.odyseus_convert_to_html5": {
+        "exec_map": {
+            "linux": [{
+                "cmd": "${packages}/OdyseusSublimePlugins/st_scripts/html5_converter.py",
+                "args": [
+                    "--quote-attr-values=always",
+                    "--resolve-entities",
+                    "--inject-meta-charset"
+                ]
+            }],
+            "osx": [],
+            "windows": []
+        },
+        "is_visible": "html"
+    },
+
+    // NOTE:
+    // - This command replaces Clang Format plugin.
+    // - CLI supported languages: C/C++/Java/JavaScript/Objective-C/Protobuf
+    // - CLI documentation: http://clang.llvm.org/docs/ClangFormat.html
+    // - CLI installation: Installed from Linux distribution's repository.
+    "code_formatter.odyseus_clang_format": {
+        "exec_map": {
+            "linux": [{
+                "cmd": "/usr/bin/clang-format-6.0",
+                // NOTE: Force user's home as cwd to force the retarded command to use
+                // the f*cking configuration file that I WANT!!!
+                "cwd": "~",
+                "args": [
+                    "--style=file"
+                ]
+            }],
+            "osx": [],
+            "windows": []
+        },
+        "is_visible": [
+            "c.sublime-syntax",
+            "c++.sublime-syntax",
+            "c++11.sublime-syntax",
+            "high level sl",
+            "opengl sl"
+        ]
+    },
+
+    // NOTE:
+    // - This command replaces AutoPEP8 plugin.
+    // - CLI supported languages: Python
+    // - CLI git repository: https://github.com/hhatto/autopep8
+    // - CLI installation: Installed with `sudo pip3 install autopep8`.
+    "code_formatter.odyseus_autopep8": {
+        "exec_map": {
+            "linux": [{
+                "cmd": "~/.local/bin/autopep8",
+                "args": [
+                    // "~/.local/bin/autopep8",
+                    "--max-line-length",
+                    "100",
+                    "--ignore",
+                    "W690,E402,E721",
+                    "--aggressive",
+                    "-"
+                ]
+            }],
+            "osx": [],
+            "windows": []
+        },
+        "is_visible": "python"
+    },
+
+    // NOTE:
+    // - This command replaces JsFormat plugin.
+    // - CLI supported languages: JavaScript
+    // - CLI git repository: https://github.com/beautify-web/js-beautify
+    // - CLI installation: Installed with `sudo pip3 install jsbeautifier`.
+    // - CLI alternative installation: Installed with `sudo npm -g install js-beautify`.
+    "code_formatter.odyseus_js_beautify": {
+        "exec_map": {
+            "linux": [{
+                "cmd": "/usr/local/bin/js-beautify",
+                "args": [
+                    "--stdin",
+                    "--operator-position=before-newline",
+                    "--brace-style=collapse",
+                    "-"
+                ]
+            }],
+            "osx": [],
+            "windows": []
+        },
+        "whole_file_not_allowed": "html",
+        "is_visible": [
+            "javascript",
+            "html"
+        ]
+    },
+
+    // NOTE:
+    // - This command replaces EsFormatter plugin.
+    // - CLI supported languages: JavaScript
+    // - CLI git repository: https://github.com/millermedeiros/esformatter
+    // - CLI installation: Installed with `sudo npm install -g esformatter`.
+    "code_formatter.odyseus_js_es_formatter": {
+        "exec_map": {
+            "linux": [{
+                "cmd": "/usr/bin/esformatter",
+                "args": [
+                    "--config",
+                    "~/.esformatter.json"
+                ]
+            }],
+            "osx": [],
+            "windows": []
+        },
+        "whole_file_not_allowed": "html",
+        "is_visible": [
+            "javascript",
+            "html"
+        ]
+    },
+
+    // NOTE:
+    // - This command replaces jsPrettier plugin.
+    // - CLI supported languages: CSS/SCSS/JavaScript/JSON/HTML/YAML/others
+    // - CLI git repository: https://github.com/prettier/prettier
+    // - CLI installation: Installed with `sudo npm install -g prettier`.
+    "code_formatter.odyseus_css_prettier": {
+        "exec_map": {
+            "linux": [{
+                "cmd": "/usr/bin/prettier",
+                "args": [
+                    "--parser",
+                    "css",
+                    "--config",
+                    "~/.prettierrc.yaml"
+                ]
+            }],
+            "osx": [],
+            "windows": []
+        },
+        "whole_file_not_allowed": "html",
+        "is_visible": [
+            "scss",
+            "sass",
+            "html",
+            "css"
+        ]
+    },
+
+    // NOTE:
+    // - CLI supported languages: CSS/SCSS/JavaScript/JSON/HTML/YAML/others
+    // - CLI git repository: https://github.com/prettier/prettier
+    // - CLI installation: Installed with `sudo npm install -g prettier`.
+    "code_formatter.odyseus_json_prettier": {
+        "exec_map": {
+            "linux": [{
+                "cmd": "/usr/bin/prettier",
+                "args": [
+                    "--parser",
+                    "json",
+                    "--config",
+                    "~/.prettierrc.yaml"
+                ]
+            }],
+            "osx": [],
+            "windows": []
+        },
+        "is_visible": [
+            "json"
+        ]
+    },
+
+    // NOTE:
+    // - This command replaces Pretty YAML and Pretty YAML Node plugin.
+    // - CLI supported languages: CSS/SCSS/JavaScript/JSON/HTML/YAML/others
+    // - CLI git repository: https://github.com/prettier/prettier
+    // - CLI installation: Installed with `sudo npm install -g prettier`.
+    "code_formatter.odyseus_yaml_prettier": {
+        "exec_map": {
+            "linux": [{
+                "cmd": "/usr/bin/prettier",
+                "args": [
+                    "--parser",
+                    "yaml",
+                    "--config",
+                    "~/.prettierrc.yaml"
+                ]
+            }],
+            "osx": [],
+            "windows": []
+        },
+        "is_visible": "yaml"
+    },
+
+    /**********************************************
+     * Options used in case_conversion.py plugin. *
+     **********************************************/
+    // detect_acronyms (bool): will cause certain words in variable names to be
+    // marked as acronyms, making them upper-case ("URL") instead of
+    // capitalized ("Url").
+    "case_conversion.detect_acronyms": true,
+
+    // use_acronyms_list (bool): Causes a more robust way to detect acronyms to be
+    // used, by searching for words from a predefined list.
+    "case_conversion.use_acronyms_list": false,
+
+    // acronyms (list): A list of words that are to be considered acronyms.
+    "case_conversion.acronyms": [
+        "HTML",
+        "CSS",
+        "HTTP",
+        "URL",
+        "GUI",
+        "UI",
+        "ID",
+        "GUI"
+    ],
+
+    /*******************************************************
+     * Options used in sidebar_context_commands.py plugin. *
+     *******************************************************/
+    // NOTE: Read the documentation about **Sidebar context menu commands** for details.
+    "sidebar_context_commands.odyseus_convert_snippet_to_completions": {
+        "exec_map": {
+            "linux": [{
+                "cmd": "${packages}/OdyseusSublimePlugins/st_scripts/snippets_to_completions.py",
+                "args": ["${selected_sidebar_path}"],
+                "path_type": "folder",
+                "allow_multiple": false,
+                "report_stdout": true,
+                "is_visible": 1
+            }],
+            "osx": [],
+            "windows": []
+        }
+    },
+    "sidebar_context_commands.odyseus_open_git_gui_sidebar_context": {
+        "exec_map": {
+            "linux": [{
+                "cmd": "/usr/bin/git",
+                "args": ["gui"],
+                "exec_once": false,
+                "path_type": "folder"
+            }],
+            "osx": [],
+            "windows": []
+        }
+    },
+    "sidebar_context_commands.odyseus_open_git_history_sidebar_context": {
+        "exec_map": {
+            "linux": [{
+                "cmd": "/usr/bin/gitk",
+                "path_type": "folder"
+            }],
+            "osx": [],
+            "windows": []
+        }
+    },
+    "sidebar_context_commands.odyseus_jshint_directory_sidebar_context": {
+        "exec_map": {
+            "linux": [{
+                "cmd": "/usr/bin/jshint",
+                "args": ["--verbose" /*, "--show-non-errors"*/ ],
+                "report_stdout": true,
+                "pass_path_to_cmd": true,
+                "path_type": "folder"
+            }],
+            "osx": [],
+            "windows": []
+        }
+    },
+    "sidebar_context_commands.odyseus_compare_folders_sidebar_context": {
+        "exec_map": {
+            "linux": [{
+                "cmd": "/usr/bin/meld",
+                "exec_once": true,
+                "pass_path_to_cmd": true,
+                "path_type": "folder",
+                "is_visible": [">=2", "<=3"]
+            }],
+            "osx": [],
+            "windows": []
+        }
+    },
+    "sidebar_context_commands.odyseus_compare_files_sidebar_context": {
+        "exec_map": {
+            "linux": [{
+                "cmd": "/usr/bin/meld",
+                "exec_once": true,
+                "pass_path_to_cmd": true,
+                "path_type": "file",
+                "is_visible": [">=2", "<=3"]
+            }],
+            "osx": [],
+            "windows": []
+        }
+    },
+    "sidebar_context_commands.odyseus_open_terminal_sidebar_context": {
+        "exec_map": {
+            "linux": [{
+                "cmd": "/usr/bin/x-terminal-emulator",
+                "path_type": "folder",
+                "is_visible": 1
+            }],
+            "osx": [],
+            "windows": []
+        }
+    },
+
+    /*************************************************
+     * Options used in compare_open_files.py plugin. *
+     *************************************************/
+    // Define the executable name/s or path/s of any Diff program.
+    // Only programs that open their own interfaces should be used.
+    // If the first in a list for a platform isn't found, the next one will be used.
+    "compare_open_files.exec_map": {
+        "linux": [
+            "/usr/bin/meld"
+        ],
+        "osx": [],
+        "windows": []
+    },
+
+    /************************************************
+     * Options used in search_html_pages.py plugin. *
+     ************************************************/
+    // Override settings of default commands.
+    // NOTE: Settings of added commands can also be overridden.
+    "search_html_pages.odyseus_search_python_docs_local": {
+        "base_url": "http://0.0.0.0:8888/archives/ext/Software/Documentation/Python 3 Current Documentation/python-current-docs-html/search.html",
+        "params": {
+            "q": "${search_term}",
+            "check_keywords": "yes"
+        },
+        "is_visible": "python"
+    },
+
+    "search_html_pages.odyseus_search_python_docs_online": {
+        "base_url": "https://docs.python.org/3/search.html",
+        "params": {
+            "q": "${search_term}",
+            "check_keywords": "yes"
+        },
+        "is_visible": false
+    },
+
+    /***********************************************
+     * Options used in search_with_zeal.py plugin. *
+     ***********************************************/
+    // Define Zeal's executable name/s or path/s.
+    "search_with_zeal.exec_map": {
+        "linux": [
+            "/usr/bin/zeal"
+        ],
+        "osx": [],
+        "windows": [
+            "C:\\Program Files\\Zeal\\zeal.exe"
+        ]
+    },
+
+    // Set visibility of "Search Selection on Zeal" command.
+    "search_with_zeal.search_selection_is_visible": "auto",
+
+    // Sort mapping results.
+    "search_with_zeal.sort_mapping": true,
+
+    // Language mapping.
+    "search_with_zeal.language_mapping": {
+        "HTML": {
+            "lang": "html",
+            "zeal_lang": "html"
+        },
+        "JavaScript": {
+            "lang": "javascript",
+            "zeal_lang": "javascript"
+        },
+        "CSS": {
+            "lang": "css",
+            "zeal_lang": "css"
+        },
+        "PHP": {
+            "lang": "php",
+            "zeal_lang": "php"
+        },
+        "Python": {
+            "lang": "python",
+            "zeal_lang": "python"
+        },
+        "Ruby": {
+            "lang": "ruby",
+            "zeal_lang": "ruby"
+        },
+        "Sass": {
+            "lang": "sass",
+            "zeal_lang": "sass"
+        },
+        "SCSS": {
+            "lang": "scss",
+            "zeal_lang": "sass"
+        },
+        "Bourne Again Shell (bash)": {
+            "lang": "bash",
+            "zeal_lang": "bash"
+        }
+    },
+
+    /*********************************************
+     * Options used in word_highlight.py plugin. *
+     *********************************************/
+    "word_highlight.live_highlight": true,
+    "word_highlight.color_scope_name": "comment",
+    "word_highlight.case_sensitive": true,
+    "word_highlight.draw_no_fill": false,
+    "word_highlight.draw_no_outline": true,
+    "word_highlight.draw_solid_underline": true,
+
+    "word_highlight.hide_on_minimap": true,
+    "word_highlight.mark_occurrences_on_gutter": true,
+    // Valid icon names: dot, circle, bookmark and cross.
+    "word_highlight.icon_type_on_gutter": "dot",
+
+    "word_highlight.highlight_delay": 100,
+    "word_highlight.highlight_when_selection_is_empty": true,
+    "word_highlight.highlight_word_under_cursor_when_selection_is_empty": false,
+    "word_highlight.highlight_non_word_characters": false,
+    "word_highlight.show_word_highlight_status_bar_message": false,
+
+    "word_highlight.file_size_limit": 4194304,
+    "word_highlight.when_file_size_limit_search_this_num_of_characters": 20000,
+
+    /**********************************************
+     * Options used in trailing_spaces.py plugin. *
+     **********************************************/
+    "trailing_spaces.live_highlight": true,
+    "trailing_spaces.highlight_delay": 50,
+
+    // Scope name.
+    "trailing_spaces.highlight_color": "invalid.illegal",
+    "trailing_spaces.include_empty_lines": true,
+    "trailing_spaces.include_current_line": false,
+
+    // Number of chars.
+    "trailing_spaces.file_max_size": 1048576,
+    "trailing_spaces.regexp": "[ \t]+",
+    "trailing_spaces.syntax_ignore": [],
+    "trailing_spaces.scope_ignore": [
+        "text.find-in-files",
+        "source.build_output",
+        "source.diff"
+    ],
+
+    /*************************************************
+     * Options used in fix_python_imports.py plugin. *
+     *************************************************/
+    "fix_python_imports.split_import_statements": true,
+    "fix_python_imports.sort_import_statements": true,
+
+    /*******************************************
+     * Options used in toggle_words.py plugin. *
+     *******************************************/
+    "toggle_words": [
+        ["left", "right"],
+        ["up", "down"],
+        ["top", "bottom"],
+        ["width", "height"],
+        ["true", "false"],
+        ["yes", "no"],
+        ["on", "off"],
+        ["0", "1"]
+    ],
+
+    /**********************************************
+     * Options used in display_numbers.py plugin. *
+     **********************************************/
+    "display_numbers.bytes_in_word": 4,
+    "display_numbers.bit_positions_reversed": false,
+    "display_numbers.hide_popup_on_mouse_move_away": true,
+}

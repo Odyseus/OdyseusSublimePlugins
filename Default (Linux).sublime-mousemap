@@ -1,0 +1,11 @@
+[{
+    // Word Highlight: Ctrl + Alt + double click will select highlighted words.
+    "button": "button1",
+    "count": 2,
+    "modifiers": ["ctrl", "alt"],
+    "press_command": "drag_select",
+    "press_args": {
+        "by": "words"
+    },
+    "command": "odyseus_wh_select_highlighted_words"
+}]

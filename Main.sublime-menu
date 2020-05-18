@@ -1,0 +1,72 @@
+[{
+    "id": "edit",
+    "children": [{
+        "id": "line",
+        "children": [{
+            "caption": "Delete blank lines",
+            "command": "odyseus_delete_blank_lines",
+            "id": "odyseus-delete-blank-lines-selection",
+            "args": {
+                "surplus": false
+            }
+        }, {
+            "caption": "Delete Surplus blank lines",
+            "command": "odyseus_delete_blank_lines",
+            "id": "odyseus-delete-blank-lines-selection-surplus",
+            "args": {
+                "surplus": true
+            }
+        }, {
+            "caption": "Delete blank lines (whole file)",
+            "command": "odyseus_delete_blank_lines",
+            "id": "odyseus-delete-blank-lines-whole-file",
+            "args": {
+                "surplus": false,
+                "whole_file": true
+            }
+        }, {
+            "caption": "Delete Surplus blank lines (whole file)",
+            "command": "odyseus_delete_blank_lines",
+            "id": "odyseus-delete-blank-lines-whole-file-surplus",
+            "args": {
+                "surplus": true,
+                "whole_file": true
+            }
+        }]
+    }]
+}, {
+    "caption": "Preferences",
+    "id": "preferences",
+    "mnemonic": "n",
+    "children": [{
+        "id": "package-settings",
+        "children": [{
+            "caption": "OdyseusPlugins",
+            "children": [{
+                "caption": "Settings",
+                "command": "edit_settings",
+                "args": {
+                    "base_file": "${packages}/OdyseusSublimePlugins/OdyseusSublimePlugins.sublime-settings",
+                    "default": "// OdyseusSublimePlugins Settings - User\n{\n\t$0\n}\n"
+                }
+            }, {
+                "caption": "Message Panel Settings",
+                "command": "edit_settings",
+                "args": {
+                    "base_file": "${packages}/OdyseusSublimePlugins/st_plugins/message_panel/OSP-message_panel.sublime-settings",
+                    "default": "// OdyseusSublimePlugins Message Panel Settings - User\n{\n\t$0\n}\n"
+                }
+            }, {
+                "caption": "-"
+            }, {
+                "command": "odyseus_plugins_toggle_logging_level"
+            }, {
+                "command": "odyseus_wh_toggle_live_highlight",
+                "checkbox": true
+            }, {
+                "command": "odyseus_ts_toggle_live_highlight",
+                "checkbox": true
+            }]
+        }]
+    }]
+}]

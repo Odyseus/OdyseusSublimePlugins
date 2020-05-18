@@ -1,0 +1,168 @@
+[
+    /**************************************************
+     * Key bindings for better_find_results.py plugin *
+     **************************************************/
+    {
+        "keys": ["enter"],
+        "command": "odyseus_bfr_find_in_files_open_file",
+        "context": [{
+            "key": "selector",
+            "operator": "equal",
+            "operand": "text.find-in-files"
+        }, {
+            "key": "setting.better_find_results.keymap_disable_all",
+            "operator": "not_equal",
+            "operand": true
+        }]
+    }, {
+        "keys": ["o"],
+        "command": "odyseus_bfr_find_in_files_open_file",
+        "context": [{
+            "key": "selector",
+            "operator": "equal",
+            "operand": "text.find-in-files"
+        }, {
+            "key": "setting.better_find_results.keymap_disable_all",
+            "operator": "not_equal",
+            "operand": true
+        }]
+    }, {
+        "keys": ["a"],
+        "command": "odyseus_bfr_find_in_files_open_all_files",
+        "context": [{
+            "key": "selector",
+            "operator": "equal",
+            "operand": "text.find-in-files"
+        }, {
+            "key": "setting.better_find_results.keymap_disable_all",
+            "operator": "not_equal",
+            "operand": true
+        }]
+    }, {
+        "keys": ["n"],
+        "command": "odyseus_bfr_find_in_files_jump_file",
+        "context": [{
+            "key": "selector",
+            "operator": "equal",
+            "operand": "text.find-in-files"
+        }, {
+            "key": "setting.better_find_results.keymap_disable_all",
+            "operator": "not_equal",
+            "operand": true
+        }]
+    }, {
+        "keys": ["p"],
+        "command": "odyseus_bfr_find_in_files_jump_file",
+        "args": {
+            "forward": false
+        },
+        "context": [{
+            "key": "selector",
+            "operator": "equal",
+            "operand": "text.find-in-files"
+        }, {
+            "key": "setting.better_find_results.keymap_disable_all",
+            "operator": "not_equal",
+            "operand": true
+        }]
+    }, {
+        "keys": ["j"],
+        "command": "odyseus_bfr_find_in_files_jump_match",
+        "context": [{
+            "key": "selector",
+            "operator": "equal",
+            "operand": "text.find-in-files"
+        }, {
+            "key": "setting.better_find_results.keymap_disable_all",
+            "operator": "not_equal",
+            "operand": true
+        }]
+    }, {
+        "keys": ["k"],
+        "command": "odyseus_bfr_find_in_files_jump_match",
+        "args": {
+            "forward": false
+        },
+        "context": [{
+            "key": "selector",
+            "operator": "equal",
+            "operand": "text.find-in-files"
+        }, {
+            "key": "setting.better_find_results.keymap_disable_all",
+            "operator": "not_equal",
+            "operand": true
+        }]
+    }, {
+        "keys": ["f"],
+        "command": "odyseus_bfr_fold_and_move_to_next_file",
+        "context": [{
+            "key": "selector",
+            "operator": "equal",
+            "operand": "text.find-in-files"
+        }, {
+            "key": "setting.better_find_results.keymap_disable_all",
+            "operator": "not_equal",
+            "operand": true
+        }]
+    }, {
+        "keys": ["?"],
+        "command": "odyseus_bfr_toggle_popup_help",
+        "context": [{
+            "key": "selector",
+            "operator": "equal",
+            "operand": "text.find-in-files"
+        }, {
+            "key": "setting.better_find_results.keymap_disable_all",
+            "operator": "not_equal",
+            "operand": true
+        }]
+    },
+
+    /**************************************
+     * Key binding for deselect.py plugin *
+     **************************************/
+    {
+        "keys": ["escape"],
+        "command": "odyseus_deselect",
+        "context": [{
+            "key": "selection_empty",
+            "operator": "equal",
+            "operand": false,
+            "match_all": true
+        }]
+    },
+
+    /******************************************
+     * Key binding for toggle_words.py plugin *
+     ******************************************/
+    {
+        "keys": ["alt+ctrl+x"],
+        "command": "odyseus_toggle_word"
+    },
+
+    /********************************************
+     * Key binding for text_debugging.py plugin *
+     ********************************************/
+    {
+        "keys": ["alt+d"],
+        "command": "odyseus_text_debugging_python",
+        "context": [{
+            "key": "selector",
+            "operator": "equal",
+            "operand": "source.python"
+        }]
+    },
+
+    /*******************************************
+     * Key binding for toggle_quotes.py plugin *
+     *******************************************/
+    // NOTE: This key binding overrides default key binding to quit application.
+    // I always f*cking hated that!! So, good riddance!!
+    {
+        "keys": ["ctrl+q"],
+        "command": "odyseus_toggle_quotes",
+        "args": {
+            "force_quote": "\""
+        }
+    }
+]

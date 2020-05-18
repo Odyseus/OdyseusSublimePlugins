@@ -1,0 +1,15 @@
+{
+    "scroll_past_end": false,
+    "auto_indent": false,
+    "detect_indentation": false,
+    "draw_indent_guides": false,
+    "draw_white_space": null,
+    "gutter": true,
+    "is_widget": true,
+    "line_numbers": false,
+    "rulers": false,
+    "spell_check": false,
+    "translate_tabs_to_spaces": false,
+    "word_wrap": true,
+    "match_brackets": false,
+}

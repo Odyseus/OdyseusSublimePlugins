@@ -1,0 +1,15 @@
+{
+    "draw_indent_guides": false,
+    "gutter": true,
+    "rulers": false,
+    "spell_check": false,
+    "word_wrap": true,
+    "match_brackets": false,
+    "scroll_past_end": false,
+    "auto_indent": false,
+    "detect_indentation": false,
+    "draw_white_space": null,
+    "is_widget": true,
+    "line_numbers": false,
+    "better_find_results.keymap_disable_all": false,
+}
